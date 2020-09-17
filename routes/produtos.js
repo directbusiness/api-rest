@@ -1,21 +1,31 @@
 const express = require('express');
 const route = express.Router();
 
-route.get('/produtos', function(req, res, next){
+route.get('/produtos', (req, res, next) => {
     res.status(200).send({
         mensagem: "Usando o GET na rota produtos"
     });
 });
 
 
-route.get('/:id_produto', function (req, res, next) {
-    res.status(200).send({
-        mensagem: "Consultando um produto especifico"
-    });
+route.get('/:id_produto', (req, res, next) => {
+    const id = req.params.id_produto
+
+    if (id === 'especial') {
+        res.status(200).send({
+            mensagem: "Consultando um produto com ID " + id
+        });
+
+    } else {
+        res.status(200).send({
+            //id: id,
+            mensagem: "Voce consultou um produto com " + id
+        });
+    };
 });
 
 
-route.post('/produtos', function(req, res, next){
+route.post('/produtos', (req, res, next) => {
     res.status(201).send({
         mensagem: "Usando o POST na rota protudos"
     });
@@ -29,19 +39,19 @@ route.delete('/produtos', (req, res, next) => {
 });
 
 
-route.delete('/:id_produto', (req, res, next)=>{
+route.delete('/:id_produto', (req, res, next) => {
     const id = req.params.id_produto
 
     if (id === 'especial') {
         res.status(200).send({
-            mensagem: "Usando o metodo DELETE para um ",
-            id: id
+            mensagem: "Usando o metodo DELETE para um id ",
+            //id: id
         });
-    
-        }else{
-            res.status(200).send({
-                mensagem: "O ID do produto deletado é " + id
-            });
+
+    } else {
+        res.status(200).send({
+            mensagem: "O ID do produto deletado é " + id
+        });
     };
 });
 
