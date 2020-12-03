@@ -12,4 +12,6 @@ app.use(rotaProdutos);
 app.use(rotaClientes);
 app.use(rotaServices);
 
+// console.log(process.env)
+
 module.exports = app;

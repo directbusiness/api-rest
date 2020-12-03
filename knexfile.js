@@ -3,11 +3,13 @@
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
-      database: process.env.PG_DATABASE,
-      user: process.env.PG_USERNAME,
-      password: process.env.PG_PASSWORD
+      host: process.env.PG_HOST || '127.0.0.1',
+      port: process.env.PG_PORT || '5432',
+      database: process.env.PG_DATABASE || 'erp-sgrm_os',
+      user: process.env.PG_USERNAME || 'postgres',
+      password: process.env.PG_PASSWORD || '4651554155'
     },
 
     pool: {
@@ -18,23 +20,9 @@ module.exports = {
     migrations: {
       directory: './src/database/migrations',
       tableName: 'knex_migrations'
-    }
+    },
+    seeds: {
+      directory: './src/database/seeds'
+    },
   },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
 };

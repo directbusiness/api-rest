@@ -6,6 +6,12 @@ route.get('/clientes', (req, res, next) => {
         mensagem: "Voce usou o mentodo GET na rota clientes"
     });
 });
+route.get('/clientes:id', (req, res, next) => {
+    const id = req.params.id;
+    res.status(200).send({
+        mensagem: "Voce usou o mentodo GET na rota clientes " + id
+    });
+});
 
 route.post('/clientes', (req, res, next) => {
     res.status(201).send({
@@ -13,9 +19,10 @@ route.post('/clientes', (req, res, next) => {
     });
 });
 
-route.delete('/clientes', (req, res, next) => {
+route.delete('/clientes:id', (req, res, next) => {
+    const id = req.params.id;
     res.status(200).send({
-        mensagem: "Utilizando o metodo DELETE na rota clientes"
+        mensagem: "Utilizando o metodo DELETE na rota clientes " + id
     });
 })
 

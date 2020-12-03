@@ -8,8 +8,8 @@ route.get('/produtos', (req, res, next) => {
 });
 
 
-route.get('/:id_produto', (req, res, next) => {
-    const id = req.params.id_produto
+route.get('/produtos/:id', (req, res, next) => {
+    const id = req.params.id
 
     if (id === 'especial') {
         res.status(200).send({
@@ -19,7 +19,7 @@ route.get('/:id_produto', (req, res, next) => {
     } else {
         res.status(200).send({
             //id: id,
-            mensagem: "Voce consultou um produto com " + id
+            mensagem: "Voce consultou um produto com ID " + id
         });
     };
 });
@@ -39,7 +39,7 @@ route.delete('/produtos', (req, res, next) => {
 });
 
 
-route.delete('/:id_produto', (req, res, next) => {
+route.delete('/produtos:id', (req, res, next) => {
     const id = req.params.id_produto
 
     if (id === 'especial') {
