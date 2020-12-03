@@ -1,14 +1,14 @@
 const express = require('express');
 const route = express.Router();
 
-route.get('/produtos', (req, res, next) => {
+route.get('/posts', (req, res, next) => {
     res.status(200).send({
-        mensagem: "Usando o GET na rota produtos"
+        mensagem: "Usando o GET na rota posts"
     });
 });
 
 
-route.get('/produtos/:id', (req, res, next) => {
+route.get('/posts/:id', (req, res, next) => {
     const id = req.params.id
 
     if (id === 'especial') {
@@ -25,21 +25,21 @@ route.get('/produtos/:id', (req, res, next) => {
 });
 
 
-route.post('/produtos', (req, res, next) => {
+route.post('/posts', (req, res, next) => {
     res.status(201).send({
         mensagem: "Usando o POST na rota protudos"
     });
 });
 
 
-route.delete('/produtos', (req, res, next) => {
+route.delete('/posts', (req, res, next) => {
     res.status(201).send({
-        mensagem: "Usando o metodo DELETE para a rota produtos"
+        mensagem: "Usando o metodo DELETE para a rota posts"
     });
 });
 
 
-route.delete('/produtos:id', (req, res, next) => {
+route.delete('/posts/:id', (req, res, next) => {
     const id = req.params.id_produto
 
     if (id === 'especial') {
