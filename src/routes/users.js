@@ -5,9 +5,7 @@ const route = express.Router();
 route.get('/users', (req, res, next) => {
 
     knexdb('users').then((results) => {
-        console.log(results)
         return res.json(results);
-
     });
 });
 
