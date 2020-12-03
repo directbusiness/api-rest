@@ -5,11 +5,11 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host: process.env.PG_HOST || '127.0.0.1',
-      port: process.env.PG_PORT || '5432',
-      database: process.env.PG_DATABASE || 'erp-sgrm_os',
-      user: process.env.PG_USERNAME || 'postgres',
-      password: process.env.PG_PASSWORD || '4651554155'
+      host: process.env.PG_HOST,
+      port: process.env.PG_PORT,
+      database: process.env.PG_DATABASE,
+      user: process.env.PG_USERNAME,
+      password: process.env.PG_PASSWORD
     },
 
     pool: {
