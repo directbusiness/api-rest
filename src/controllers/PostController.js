@@ -8,6 +8,7 @@ module.exports = {
 
     async listPostID(req, res, next) {
         const id = req.params.id;
+
         const result = knexdb('posts').where('id', id);
 
         if (id != result) {
