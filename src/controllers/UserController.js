@@ -17,7 +17,7 @@ module.exports = {
             const id = req.params.id;
             const result = await knexdb('users').where('id', id);
 
-            if (id != result) {
+            if (result == '') {
                 return res.json(`Não encontramos resultado com o ID: ${id}`);
             } else {
                 return res.json(result);

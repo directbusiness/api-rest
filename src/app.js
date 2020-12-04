@@ -13,7 +13,10 @@ app.use(routes);
 routes.get('/', function (req, res, next) {
     try {
         return res.json({
-            mensagem: "Bem vindo a API-REST de postagens para estudos"
+            name: "api-rest",
+            version: "1.0.0",
+            description: "API com nodeJS e express",
+            author: "Ademar Tellecher"
         })
 
     } catch (error) {

@@ -19,17 +19,16 @@ module.exports = {
     async listPostID(req, res, next) {
         try {
             const id = req.params.id;
+            const result = await knexdb('posts').where('id', id);
 
-            const result = knexdb('posts').where('id', id);
-
-            if (id != result) {
+            if (result == '') {
                 return res.json({ mensagem: ` Não encontramos nenhum resultado com o ID: ${id}` })
             } else {
                 return res.json(result);
             }
 
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 }
