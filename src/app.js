@@ -2,16 +2,18 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 
-const rotaProdutos = require('./routes/posts');
-const rotaClientes = require('./routes/users');
-const rotaServices = require('../src/routes/services');
+const routes = require('./routes/routes');
 
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use(rotaProdutos);
-app.use(rotaClientes);
-app.use(rotaServices);
+app.use(routes);
+
+routes.get('/', function (req, res, next) {
+    return res.json({
+        mensagem: "Bem vindo a API-REST de postagens para estudos"
+    })
+})
 
 // console.log(process.env)
 
