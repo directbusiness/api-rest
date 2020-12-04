@@ -2,19 +2,34 @@ const knexdb = require("../database/dbConfig")
 
 module.exports = {
     async listPosts(req, res, next) {
-        const result = await knexdb('posts');
-        return res.json(result);
+        try {
+            const result = await knexdb('posts');
+
+            if (result == '') {
+                return res.json({ mensagem: "Não foi encontrado nenhum registro!" })
+            } else {
+                return res.json(result);
+            }
+
+        } catch (error) {
+            next(error)
+        }
     },
 
     async listPostID(req, res, next) {
-        const id = req.params.id;
+        try {
+            const id = req.params.id;
 
-        const result = knexdb('posts').where('id', id);
+            const result = knexdb('posts').where('id', id);
 
-        if (id != result) {
-            return res.json(`Não localizamos o ID: ${id} informado em nossa base de dados!`)
-        } else {
-            return res.json(result);
+            if (id != result) {
+                return res.json({ mensagem: ` Não encontramos nenhum resultado com o ID: ${id}` })
+            } else {
+                return res.json(result);
+            }
+
+        } catch (error) {
+            next(error)
         }
     }
 }
