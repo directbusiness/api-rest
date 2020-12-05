@@ -13,6 +13,7 @@ app.use(routes);
 routes.get('/', function (req, res, next) {
     try {
         return res.json({
+            message: 'Bem vindo a API-REST',
             name: "api-rest",
             version: "1.0.0",
             description: "API com nodeJS e express",
