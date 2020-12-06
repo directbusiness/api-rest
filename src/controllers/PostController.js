@@ -30,5 +30,25 @@ module.exports = {
         } catch (error) {
             next(error);
         }
+    },
+
+    async createPost(req, res, next) {
+        try {
+            const title = req.body;
+
+            const result = await knexdb('posts').where('title', title);
+
+            if (title == result) {
+                return res.json({
+                    mensagem: `Ja existe post com este titulo: ${result}`
+                })
+            } else {
+                await knexdb('posts').insert();
+                return res.json({ mensagem: `Novo post coom titulo ${title}, cadastrado com sucesso!` })
+            }
+
+        } catch (error) {
+            next(error);
+        }
     }
 }

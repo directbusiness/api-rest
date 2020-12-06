@@ -32,12 +32,13 @@ module.exports = {
         try {
             const { user, password } = req.body;
 
-            const result = knexdb('users').where('user', user, 'password', password)
+            const result = await knexdb('users').where('user', user, 'password', password)
 
             if (user, password == result) {
                 return res.json({ mensagem: "usuario ja existem em nossa base de dados" })
             } else {
-                res.json(result)
+                await knexdb('users').insert();
+                return res.json(result)
             }
         } catch (error) {
             next(error)
