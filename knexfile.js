@@ -3,24 +3,20 @@
 module.exports = {
 
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
-      host: process.env.PG_HOST || '127.0.0.1',
+      host: process.env.PG_HOST,
       port: process.env.PG_PORT,
-      database: process.env.PG_DATABASE,
       user: process.env.PG_USERNAME,
-      password: process.env.PG_PASSWORD
-    },
-
-    pool: {
-      min: 2,
-      max: 10
+      password: process.env.PG_PASSWORD,
+      database: process.env.PG_DATABASE
     },
 
     migrations: {
       directory: `${__dirname}/src/database/migrations`,
       tableName: 'knex_migrations'
     },
+
     seeds: {
       directory: `${__dirname}/src/database/seeds`
     },
