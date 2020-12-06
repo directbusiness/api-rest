@@ -2,10 +2,10 @@
 exports.up = function (knex) {
     return knex.schema.createTable('addresses', function (table) {
         table.increments('id').primary();
+        table.string('state').notNullable();
+        table.string('city').notNullable();
         table.string('streets').notNullable();
         table.string('number').notNullable();
-        table.string('city').notNullable();
-        table.string('state').notNullable();
         // table.string('zipcode').notNullable();
         // table.string('district').notNullable();
         // table.string('country').notNullable();

@@ -25,6 +25,6 @@ routes.get('/', function (req, res, next) {
     }
 })
 
-console.log(process.env)
+// console.log(process.env)
 
 module.exports = app;

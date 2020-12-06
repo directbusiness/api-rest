@@ -1,12 +1,12 @@
 
-exports.seed = function(knex) {
+exports.seed = function (knex) {
   // Deletes ALL existing entries
   return knex('addresses').del()
     .then(function () {
       // Inserts seed entries
       return knex('addresses').insert([
-        {street: 'Av. Sergio henn', number:'35', city:'Santarém', state:'PARÁ'},
-        {street: 'Av. Moaçara', number:'3509', city:'Santarém', state:'PARÁ'},
+        { state: 'Pará', city: 'Santarém', streets: 'Av. Sergio Henn', number: '35' },
+        { state: 'Paraná', city: 'Maringa', streets: 'Av. Julio Campos', number: '1309' },
       ]);
     });
 };

@@ -34,7 +34,7 @@ module.exports = {
 
     async createPost(req, res, next) {
         try {
-            const title = req.body;
+            const { title, content } = req.body;
 
             const result = await knexdb('posts').where('title', title);
 
@@ -43,12 +43,54 @@ module.exports = {
                     mensagem: `Ja existe post com este titulo: ${result}`
                 })
             } else {
-                await knexdb('posts').insert();
+                await knexdb('posts').insert({ title, content });
                 return res.json({ mensagem: `Novo post coom titulo ${title}, cadastrado com sucesso!` })
             }
 
         } catch (error) {
             next(error);
+        }
+    },
+
+    async updatePostID(req, res, next) {
+        try {
+            const { id } = req.params;
+            const { title, content } = req.body;
+
+            const result = await knexdb('posts').where('id', id);
+            if (result == id) {
+                await knexdb('posts').update({ title, content }).where({ id });
+                return res.json({
+                    mensagem: `Post atualizado com os novos dados: ${id}, ${title}, ${content}`
+                })
+            } else {
+
+            }
+
+        } catch (error) {
+            next(error)
+        }
+    },
+
+    async deletePostID(req, res, next) {
+        try {
+            const id = req.params;
+
+            const result = await knexdb('posts').where('id', id);
+
+            if (result == id) {
+                await knexdb('posts').delete(id);
+                return res.json({
+                    mensagem: `O post com ID: ${id} deletado com sucesso`
+                })
+            } else {
+                return res.json({
+                    mensagem: `Não foi encontrado POSTS com ID: ${id}`
+                })
+            }
+
+        } catch (error) {
+            next(error)
         }
     }
 }

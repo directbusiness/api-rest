@@ -1,7 +1,7 @@
 
 exports.up = knex => knex.schema.createTable('posts', table => {
     table.increments('id').primary();
-    table.string('title').unique().notNullable();
+    table.string('title').notNullable();
     table.string('content').notNullable();
 
     table.timestamp('created_at').defaultTo(knex.fn.now());

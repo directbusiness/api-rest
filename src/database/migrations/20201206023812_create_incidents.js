@@ -5,7 +5,7 @@ exports.up = function (knex) {
         table.string('title').notNullable();
         table.string('description').notNullable();
         table.decimal('value').notNullable();
-        table.blob('atached'); //Anexos 
+        // table.blob('atached'); //Anexos 
 
         table.timestamp('created_at').defaultTo(knex.fn.now());
         table.timestamp('updated_at').defaultTo(knex.fn.now());

@@ -2,10 +2,11 @@
 exports.up = function (knex) {
     return knex.schema.createTable('contacts', function (table) {
         table.increments('id').primary();
-        table.string('country_code').unique().notNullable();
+        table.string('country_code').notNullable();
         table.string('area_code').notNullable();
         table.string('number_phone').notNullable();
         table.boolean('is_whatsapp');
+        table.string('email');
         // table.string('email').unique().notNullable();
         // table.string('others_info').notNullable();
 

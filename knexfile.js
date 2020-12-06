@@ -5,11 +5,11 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host: process.env.PG_HOST,
-      port: process.env.PG_PORT,
-      user: process.env.PG_USERNAME,
-      password: process.env.PG_PASSWORD,
-      database: process.env.PG_DATABASE
+      host: process.env.PG_HOST || 'localhost',
+      port: process.env.PG_PORT || '5432',
+      user: process.env.PG_USERNAME || 'apirest',
+      password: process.env.PG_PASSWORD || '0000',
+      database: process.env.PG_DATABASE || 'db-api-rest'
     },
 
     migrations: {

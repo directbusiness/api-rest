@@ -3,7 +3,7 @@ exports.up = function (knex) {
     return knex.schema.createTable('company', function (table) {
         table.increments('id').primary();
         table.string('company_name').notNullable();
-        table.string('cmercial_name').notNullable();
+        table.string('comercial_name').notNullable();
         // table.string('company_cnpj').notNullable();
         // table.string('company_ie').notNullable();
 
