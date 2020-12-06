@@ -26,6 +26,22 @@ module.exports = {
         } catch (error) {
             next(error);
         }
+    },
+
+    async createUser(req, res, next) {
+        try {
+            const { user, password } = req.body;
+
+            const result = knexdb('users').where('user', user, 'password', password)
+
+            if (user, password == result) {
+                return res.json({ mensagem: "usuario ja existem em nossa base de dados" })
+            } else {
+                res.json(result)
+            }
+        } catch (error) {
+            next(error)
+        }
     }
 
 

@@ -1,11 +1,11 @@
 
-exports.up = function(knex) {
-  return knex.schema.createTable('users' ,function(table){
+exports.up = function (knex) {
+  return knex.schema.createTable('users', function (table) {
     table.increments('id').primary();
     // table.string('first_name').notNullable();
     // table.string('last_name').notNullable();
-    table.text('user_name').unique().unique().notNullable();
-    table.string('user_password').unique().notNullable();
+    table.text('user').unique().unique().notNullable();
+    table.string('password').notNullable();
     // table.string('user_randomic_id').notNullable();
 
     table.timestamp('created_at').defaultTo(knex.fn.now());
@@ -20,6 +20,6 @@ exports.up = function(knex) {
   })
 };
 
-exports.down = function(knex) {
-  return knex.schema.dropTable('users');  
+exports.down = function (knex) {
+  return knex.schema.dropTable('users');
 };
