@@ -77,11 +77,10 @@ module.exports = {
     async deleteUserID(req, res, next) {
         try {
             const { id } = req.params;
-
             const result = await knexdb('users').where('id', id);
 
             if (result == id) {
-                await knexdb('users').delete().where({ id });
+                await knexdb('users').where({ id }).delete();
                 return res.json({
                     mensagem: `Usuarios com ID: ${id} deletado com sucesso!`
                 })

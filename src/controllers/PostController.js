@@ -1,4 +1,5 @@
-const knexdb = require("../database/dbConfig")
+const knexdb = require("../database/dbConfig");
+const { tryCatch } = require('../errors');
 
 module.exports = {
     async listPosts(req, res, next) {
@@ -79,7 +80,7 @@ module.exports = {
             const result = await knexdb('posts').where('id', id);
 
             if (result == id) {
-                await knexdb('posts').delete(id);
+                await knexdb('posts').where({ id }).delete();
                 return res.json({
                     mensagem: `O post com ID: ${id} deletado com sucesso`
                 })
