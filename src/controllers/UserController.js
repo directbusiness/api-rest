@@ -34,15 +34,13 @@ module.exports = {
 
             const result = await knexdb('users').where('user', user)
 
-            if (user == result) {
+            if (result == user) {
                 return res.json({
-                    mensagem: "usuario ja existem, tente outro diferente"
+                    mensagem: `${user} ja existe!`
                 })
 
             } else {
-                await knexdb('users').insert({
-                    user, password
-                });
+                await knexdb('users').insert({ user, password });
                 return res.json({ mensagem: `Usuário " ${user} " cadastrado com sucesso!` })
             }
         } catch (error) {

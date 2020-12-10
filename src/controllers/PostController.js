@@ -39,13 +39,16 @@ module.exports = {
 
             const result = await knexdb('posts').where('title', title);
 
-            if (title == result) {
+            if (result == title) {
                 return res.json({
                     mensagem: `Ja existe post com este titulo: ${result}`
                 })
             } else {
                 await knexdb('posts').insert({ title, content });
-                return res.json({ mensagem: `Novo post coom titulo ${title}, cadastrado com sucesso!` })
+                return res.json({
+                    title: `' ${title} '`,
+                    Content: `' ${content} ', cadastrado com sucesso!`
+                })
             }
 
         } catch (error) {
