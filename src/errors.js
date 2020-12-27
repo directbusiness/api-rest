@@ -2,9 +2,7 @@ module.exports = {
     tryErrors(error, req, res) {
         const erro = new Error('Rota não encontrada!');
         erro.status = 404;
-
-        res.status(error.status || 500);
-        res.json({ error: error.message });
+        // res.status(404).end();
     }
 }
 

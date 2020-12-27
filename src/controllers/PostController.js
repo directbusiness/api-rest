@@ -1,5 +1,5 @@
 const knexdb = require("../database/dbConfig");
-const { tryCatch } = require('../errors');
+const { tryErrors } = require('../errors');
 
 module.exports = {
     async listPosts(req, res, next) {
@@ -13,7 +13,7 @@ module.exports = {
             }
 
         } catch (error) {
-            next(error)
+            next(tryErrors)
         }
     },
 
