@@ -1,0 +1,10 @@
+## Notions
+
+#Anotations execute command for build imagem-container aplication API-REST
+
+#build imagem container
+-> docker build -t api-rest .
+
+#Run imagem container
+-> docker run -p 3000:3000 api-rest
+
