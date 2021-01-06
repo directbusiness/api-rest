@@ -17,4 +17,10 @@ Acessar a pasta raiz do sistema e executar os seguintes comandos:
 
     * install dependencies
     npm install
+
+### CONTAINERS NESCESSAIOS PARA RODAR O SISTEMA
+
+* Crate a container postgres
+    docker pull postgres:latest
+    docker run --name=postgreSQL-v13 -e POSTGRES_PASSWORD=yourSecretPassword -d postgres:latest
     
