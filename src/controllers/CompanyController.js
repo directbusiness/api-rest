@@ -3,7 +3,7 @@ const tryErrors = require('../errors');
 
 module.exports = {
 
-    async listCompany(re, res, next) {
+    async listCompany(req, res, next) {
         try {
             const result = await knexdb('company').select('*');
 
@@ -22,10 +22,11 @@ module.exports = {
         try {
             const { company_name, comercial_name } = req.bady;
 
-            const result = await knexdb('company').insert().where({ company_name, comercial_name });
+            const result = await knexdb('company').where({ company_name, comercial_name });
             if (company_name || comercial_name == result) {
                 return res.json({ message: `${result}, Companhia ja cadastrada` })
             } else {
+                await knexdb('company').where({ company_name, comercial_name }).insert();
                 return res.json({ message: `Companhia ${comercial_name} ${company_name}, , cadastrada com sucesso` })
             }
 
