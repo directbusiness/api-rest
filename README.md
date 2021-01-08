@@ -4,23 +4,23 @@ Aplicação de testes para aprendizado e estudos do NodeJS com express
 
 Este trabalho é o resultado de uma série de vídeo aulas gratuitas que esta disponibilizadas no canal do youtube <https://www.youtube.com/playlist?list=PLWgD0gfm500EMEDPyb3Orb28i7HK5_DkR>
 
-###Utilizamos nesta API-REST
+Utilizamos nesta API-REST
 
-### REQUERIMENTOS PARA RODAR O SISTEMA
+* REQUERIMENTOS PARA RODAR O SISTEMA
+  + NodeJS Version >=15
+  + PostgreSQL Version >=13
 
-* NodeJS Version >=15
-* PostgreSQL Version >=13
+COMANDO PARA RODAR O SISTEMA
 
-### COMANDO PARA RODAR O SISTEMA
+* Acessar a pasta raiz do sistema e executar os seguintes comandos:
+  + install dependencies
+  + npm install
 
-Acessar a pasta raiz do sistema e executar os seguintes comandos:
+CONTAINERS NESCESSAIOS PARA RODAR O SISTEMA
 
-    * install dependencies
-    npm install
+* Crate a container postgres caso não tenha um container postgres:
+* Baixar imagem oficial do postgreSQL:
+* => docker pull postgres:latest
 
-### CONTAINERS NESCESSAIOS PARA RODAR O SISTEMA
-
-* Crate a container postgres
-    docker pull postgres:latest
-    docker run --name=postgreSQL-v13 -e POSTGRES_PASSWORD=yourSecretPassword -d postgres:latest
-    
+* Executar o container do postgrSQL
+  + => docker run --name=postgreSQL-v13 -e POSTGRES_PASSWORD=yourSecretPassword -d postgres:latest
